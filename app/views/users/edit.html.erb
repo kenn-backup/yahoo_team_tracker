@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Edit all information that you would like to change</h3>
+  <!-- <p>Leave all else blank</p> -->
+  <div class="form_container">
+    <%= form_for @user do |f| %>
+
+      <%= f.label :username %>:
+      <%= f.text_field :username %><br />
+
+      <%= f.label :email %>:
+      <%= f.text_field :email %><br />
+
+      <%= f.label :password %>:
+      <%= f.text_field :password %><br />
+
+      <%= f.submit %>
+
+    <% end %>
+  </div>
+
+</div>

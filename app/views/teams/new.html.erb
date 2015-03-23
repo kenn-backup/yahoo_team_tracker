@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="form_containter">
+    <%= form_for @team do |f| %>
+      <ul class="no_bullets">
+        <li>
+          <%= f.label :name %>:
+          <%= f.text_field :name %>
+        </li>
+        <div class='player_selection'>
+          <%= render partial: 'players/add_player', locals: {num_players: 1, players: @players} %>
+        </div>
+        <br>
+        <li><a class="button add_player" href="#">Add Player</a></li>
+        <li><a class="button remove_player" href="#">Remove</a></li>
+        <br>
+        <li><%= f.submit %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

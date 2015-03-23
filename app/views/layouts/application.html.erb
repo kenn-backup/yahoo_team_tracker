@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TeamTrackerRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="navbar">
+	  <a class="btn" href="/">Home</a>
+	  <a class="btn" href="/teams/new">Create Team</a>
+	  <% if session[:id] == nil %>
+	    <a class="btn" href="/login">Log In</a>
+	    <a class="btn" href="/users/new">Sign Up</a>
+	  <% else %>
+	    <a class="btn" href="/users/<%=session[:id]%>">Profile</a>
+	    <a class="btn" href="/logout">Log Out</a>
+	  <% end %>
+	</div>
+	<%= yield %>
+</body>
+</html>

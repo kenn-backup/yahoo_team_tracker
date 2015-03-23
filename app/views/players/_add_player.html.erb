@@ -1,0 +1,8 @@
+<li>
+  <p>Player <%=@num_players%>:</p>
+  <select class="player" name="players[player_<%=@num_players%>]">
+    <% @players.each do |player| %>
+      <option value="<%= player.id %>"><%= player.last_name %>, <%= player.first_name %></option>
+    <% end %>
+  </select>
+</li>

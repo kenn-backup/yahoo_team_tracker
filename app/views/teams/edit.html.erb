@@ -1,0 +1,48 @@
+<div class='container'>
+  <h1><%=@team.name%></h1>
+  <h3>Team Settings</h3>
+  <form action="/teams/<%=@team.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <ul class="no_bullets">
+      <li>New name: <input type="text" name="edit_team[name]" placeholder="New Team Name"></li>
+      <li>Transfer Ownership: <input type="text" name="edit_team[username]" placeholder="Username of new owner"></li>
+      <li><input type="submit" value="Edit Settings"></li>
+    </ul>
+  </form>
+  <h3>Players</h3>
+  <ul class="no_bullets">
+  <form id="add_to_team" action="/teams/<%=@team.id%>/add_players" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class='player_selection'>
+    </div>
+    <div class='buttons'>
+      <ul class="no_bullets">
+        <li><a class="button add_player add_buttons" href="#">Add player</a></li>
+        <li><a class="initiallyHidden button remove_player" href="#">Remove</a></li>
+      </ul>
+    </div>
+    <input class="initiallyHidden" type="submit" value="Add Player(s)">
+  </form>
+  <form>
+    <table class="my_team">
+      <tr>
+        <th>Player</th>
+        <th>Position</th>
+        <th>Pro Team</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+      <% @team.players.each do |player| %>
+        <tr>
+          <td><%=player.last_name%>, <%=player.first_name%></td>
+          <td><%=player.position%></td>
+          <td><%=player.pro_team%></td>
+          <td><%=player.age%></td>
+          <td>
+            <a class="release_player button" href="/teams/<%=@team.id%>/delete_player" name="<%=player.id%>">Release</a>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<div id="signup" class="form_container">
+  <h2>Sign Up</h2>
+  <%= form_for @user do |f| %>
+    <%= f.label :username %>:
+    <%= f.text_field :username %><br />
+
+    <%= f.label :email %>:
+    <%= f.text_field :email %><br />
+
+    <%= f.label :password %>:
+    <%= f.password_field :password %><br />
+
+    <!-- <%#= f.label :password_confirmation %>:
+    <%#= f.text_field :password_confirmation %><br /> -->
+
+    <%= f.submit %>
+  <% end %>
+
+<!-- ############### Sinatra Jazz ############### -->
+  <!-- <form id="login" action="/signup" method="post">
+    <ul class="no_bullets">
+      <li>Username: <input type="text" name="new_user[username]"></li>
+      <li>Email: <input type="text" name="new_user[email]"></li>
+      <li>Password: <input type="password" name="new_user[password]"></li>
+      <li>Password Confirmation: <input type="password" name="new_user[password_confirmation]"></li>
+      <input type="submit" value="Sign Up">
+    </ul>
+  </form> -->
+<!-- ############################################ -->
+
+</div>
