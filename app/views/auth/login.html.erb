@@ -1,26 +1,22 @@
 <div class="container">
   <div class="error initiallyHidden">
   </div>
-  <div class="form_container">
+  <!-- <div class="form_container">
     <h2>Log In</h2>
-    <!-- <form id="login" action="/login" method="post">
-      <ul class="no_bullets">
-        <li>Username: <input type="text" name="username"></li>
-        <li>Password: <input type="password" name="password"></li>
-        <input type="submit" value="Log In">
-      </ul>
-    </form> -->
-    <%= form_for(@user, url: login_path(@user)) do |f| %>
+    <%#= form_for(@user, url: login_path(@user)) do |f| %>
 
-      <%= f.label :username %>:
-      <%= f.text_field :username %>
+      <%#= f.label :username %>:
+      <%#= f.text_field :username %>
 
-      <%= f.label :password %>:
-      <%= f.password_field :password %>
+      <%#= f.label :password %>:
+      <%#= f.password_field :password %>
 
-      <%= f.submit 'Submit' %> 
+      <%#= f.submit 'Submit' %> 
 
-    <% end %>
+    <%# end %>
 
+  </div> -->
+  <div class="oauth">
+    <%= button_to "Log In with Yahoo", action: "signin" %>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<div class="container">
+  <h3><%=@user.username%></h3>
+  <h4>Would you really like to delete this team?</h4>
+  <%= link_to("Confirm", user_path(@user), method: :delete ) %>
+</div>

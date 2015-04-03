@@ -26,7 +26,6 @@ $(document).ready(function() {
       type: "get",
       url: "/teams/new/add_player",
       data: { player_count: $('.player').length },
-      // async: true,
       success: function(response){
         $('.player_selection').append(response);
       },
@@ -58,6 +57,7 @@ $(document).ready(function() {
     $.ajax({
       type: 'delete',
       url: $target.attr('href'),
+      dataType: 'json',
       data: {player_id: $target.attr('name')},
       success: function(){
         $target.parent().parent().remove()
@@ -86,31 +86,24 @@ $(document).ready(function() {
     })
   })
 
-  // Currently tabled
-  // $('#add_to_team').on('submit', function(event){
-  //   event.preventDefault()
+  $('#add_to_team').on('submit', function(event){
+    event.preventDefault()
 
-  //   var $target = $(event.target)
-  //   console.log($target.serialize())
+    var $target = $(event.target)
 
-  //   $.ajax({
-  //     type: 'put',
-  //     url: $target.attr('action'),
-  //     data: $target.serialize(),
-  //     dataType: 'json',
-  //     success: function(response){
-  //       console.log(response)
-  //       for (var key in response){
-  //         for (var prop in key){
-  //           $('.my_team').append(tableHTML(prop.name, prop.pos, prop.pro_team, prop.age))
-  //         }
-  //       }
-  //     },
-  //     error: function(){
-  //       console.log("adding players to team ajax call is not working")
-  //     }
-  //   })
-  // })
+    $.ajax({
+      type: 'put',
+      url: $target.attr('action'),
+      data: {player_id: $target.find(":selected").val()},
+      dataType: 'json',
+      success: function(player){
+        $('.my_team').append('<tr><td>' + player.player_name + '</td><td>' + player.position + '</td><td>' + player.pro_team + '</td><td>' + player.age + '</td><td><a class="release_player button" href="/teams/' + player.team + '/delete_player" name="' + player.id + '">Release</a></td></tr>');
+      },
+      error: function(){
+        console.log("adding players to team ajax call is not working")
+      }
+    })
+  })
 
 
 });

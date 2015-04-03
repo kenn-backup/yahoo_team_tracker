@@ -20,7 +20,9 @@
     <% end %>
   </table>
   <% if session[:id] == @team.user.id %>
-    <a href="/teams/<%=@team.id%>/edit">Edit Team</a>
-    <a href="/teams/<%=@team.id%>/delete">Delete Team</a>
+    <%= link_to("Edit Team", edit_team_path(@team)) %>
+    <%= link_to("Delete Team", "/teams/#{@team.id}/delete") %>
+    <!-- <a href="/teams/<%=@team.id%>/edit">Edit Team</a> -->
+    <!-- <a href="/teams/<%=@team.id%>/delete">Delete Team</a> -->
   <% end %>
 </div>

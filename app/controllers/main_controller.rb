@@ -1,9 +1,7 @@
 class MainController < ApplicationController
 
   def index
-  	@teams = Team.all
+  	@teams = Team.all.order(score: :desc)
   end
-
-  
 
 end

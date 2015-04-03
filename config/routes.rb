@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # Need to modify these to only create routes that I need
   resources :users
   resources :teams
   resources :players
@@ -15,10 +16,17 @@ Rails.application.routes.draw do
 
   get '/login' => 'auth#login'
   
-  get '/teams/new/add_players' => 'teams#add_players'
+  get '/teams/new/add_player' => 'teams#add_player'
+
+  get '/callback' => 'auth#callback' #Rename these later
 
   post '/login' => 'auth#signin'
 
+  put '/teams/:id/vote' => 'teams#vote'
+
+  put '/teams/:id/add_player' => 'team_players#add_player'
+
+  delete '/teams/:id/delete_player' => 'team_players#release_player'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

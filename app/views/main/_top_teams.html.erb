@@ -1,0 +1,14 @@
+ <ul>
+  <% @teams.each do |team| %>
+  <li>
+    <a href="/teams/<%=team.id%>"><%= team.name %></a>
+    <ul class="no_bullets">
+      <li>Points: <span id="team_<%=team.id%>"><%= team.score%></span></li>
+      <li>Owner: <a href="/users/<%=team.user.id%>"><%= team.user.username%></a></li>
+      <li><a class="vote button" href="/teams/<%=team.id%>/vote">Vote</a></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>
+
+<!-- Try to replace this with a content tag for at some point -->

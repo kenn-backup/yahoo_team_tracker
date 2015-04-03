@@ -11,13 +11,13 @@
   </form>
   <h3>Players</h3>
   <ul class="no_bullets">
-  <form id="add_to_team" action="/teams/<%=@team.id%>/add_players" method="post">
+  <form id="add_to_team" action="/teams/<%=@team.id%>/add_player" method="post">
     <input type="hidden" name="_method" value="put">
     <div class='player_selection'>
     </div>
     <div class='buttons'>
       <ul class="no_bullets">
-        <li><a class="button add_player add_buttons" href="#">Add player</a></li>
+        <li><a class="button add_player add_buttons" href="#">Add a player</a></li>
         <li><a class="initiallyHidden button remove_player" href="#">Remove</a></li>
       </ul>
     </div>
@@ -38,9 +38,7 @@
           <td><%=player.position%></td>
           <td><%=player.pro_team%></td>
           <td><%=player.age%></td>
-          <td>
-            <a class="release_player button" href="/teams/<%=@team.id%>/delete_player" name="<%=player.id%>">Release</a>
-          </td>
+          <td><%= link_to("Release", "/teams/#{@team.id}/delete_player", method: :delete, class: "release_player button", name: "#{player.id}") %></td>
         </tr>
       <% end %>
     </table>
